@@ -1,0 +1,311 @@
+/* Imports */
+
+@import url("https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Inter:wght@300;500;700&display=swap");
+
+/* Variables */
+
+:root {
+  --principal: #0b0c0d;
+  --secondary: #fff;
+  --font-primary: "Inter", sans-serif;
+  --font-secondary: "Bowly One SC", cursive;      
+}
+
+/* Normalize */
+
+*,
+* ::after,
+* ::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%; /* esto sirve para "hackear" el navegador, ya que le pone por defecto 16px al tamaño de la letra. Con esto lo dejamos en 10px*/
+    font-family: var(--font-primary);
+    color: var(--principal);
+}
+
+body {
+    display: grid;
+    min-height: 100vh;
+     /*tamaño de las columnas*/
+    grid-template-columns: repeat(4, 1fr); /* el ancho de la pantalla se divide en 4 y a cada uno le corresponde 1fr*/
+    grid-template-rows: 15% 75% 10%; /*tamaño de las 3 filas - header, main y footer*/
+    background-image: linear-gradient(to left top, #252525, #1d1d1d, #161616, #0d0d0d, #000000);
+}
+
+header a{
+    font-size: 2em; /* con el 62,5% que hicimos antes ahora 1rem=10px.*/
+}
+ul {
+    list-style-type: none;
+}
+header a {
+    text-decoration: none;
+    color: var(--secondary); 
+    display: inline-block; /* para que tome los rellenos y le de vista a los botones del submenú*/
+}
+
+/* Helpers - esto sirve para usar a lo largo del proyecto*/
+
+.flex-row {
+    display: flex;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1080px; /*ancho máximo. La etiqueta no va a crecer mas de eso para que no se estire*/
+    margin: 0 auto;
+}
+
+ /*LOGOS QUE VAN A QUEDAR FIJOS PARA CONTACTO*/
+ #logocontacto {
+    position: fixed;
+    z-index: 10;
+    overflow: hidden; 
+    display: block;
+    right: 10px;
+    bottom: 5px;
+}
+
+  #logo_mail {
+    position: fixed;
+    z-index: 10;
+    overflow: hidden; 
+    display: block;
+    right: 10px;
+    bottom: 50px;
+}
+
+/* Header & Navbar */
+header {
+    background: rgba(0, 0, 0, 0.9);
+    position: fixed;
+    width: 100%;
+    grid-column: 1 / 5;
+}
+
+header .navbar {
+    min-height: 10vh; /*esto es para que quede como mínimo de 10vh el navbar*/
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem; /*esto es para que quede un pequeño margen a los costados cuando se achique la pantalla, los 2 rem */
+}
+
+header .navbar picture img {
+    animation: rotation 3s ease-in-out infinite;  
+}
+
+header .menu {
+    flex-basis: 50%; /*para determinar cuanto del elemento padre va a ocupar el menú*/
+    justify-content: space-between;
+}
+
+.menu .menu__item .menu__link {
+    font-size: 1.8em; /* tamaño letra 18px */
+    padding: 1rem; /*10px a todos los lados. Esto sirve para que ponga un padding y se pueda clickear el item no solo en las letras sino cerca también*/
+    transition: all .3s ease-in-out;
+}
+
+.menu .menu__item .menu__link:hover {
+    color: #a7a7a7;
+}
+
+.navbar .sub-menu {
+    display: none;
+    position: absolute;
+}
+
+.navbar .menu .menu__item:hover .sub-menu {
+    display: block;
+    background-color: var(--principal)
+}
+
+.menu__item .sub-menu .sub-menu__link{
+    padding: 1rem;
+    font-size: 1.4em;
+    transition: all .3s ease-in-out;
+}
+
+.menu__item .sub-menu .sub-menu__link:hover{
+
+    color: #a7a7a7;
+}
+
+
+/*Sección principal*/
+
+#banner{
+    width: 100%;
+}
+
+.bannersection {
+    gap: 2rem;
+    align-items: center;
+    padding: 0 2em;
+    grid-column: 1 / 5;
+    grid-row: 1;
+}
+.presentation {
+    gap: 2rem;
+    align-items: center;
+    padding: 0 2em;
+    grid-column: 1 / 5;
+    grid-row: 2;
+}
+
+.socios {
+    gap: 15rem;
+    align-items: center;
+    padding: 2em 2em;
+    grid-column: 1 / 5;
+    grid-row: 2;
+}
+
+.presentation__picture {
+    flex-basis: 50%;
+    min-width: 320px;
+}
+
+.socios_columnOne{
+    flex-basis: 50%;
+    color: var(--secondary);
+    }
+
+.socios_columnTwo{
+    flex-basis: 50%;
+    color: var(--secondary);
+    }
+
+.socio_text{
+    padding: 2em 0;
+}
+
+.presentation__img {
+    width: 100%;
+    padding: 1.5em 0;
+}
+
+.presentation__description {
+    flex-basis: 50%;
+    color: var(--secondary);
+}
+
+.presentation__container p {
+    font-size: 1.6em;
+    padding: 1em;
+}
+
+.presentation__container h1 {
+    font-size: 3em;
+}
+
+
+
+/*footer*/
+
+  footer {
+    background-color: rgba(105, 105, 105, 0.37);
+    grid-column: 1 / 5;
+    grid-row: 3;
+    text-align: center;
+    color: var(--secondary); 
+    height: 10vh;
+  }
+
+  footer a {
+    text-decoration: none; 
+  }
+
+  /* MEDIA QUERIES*/
+
+@media screen and (max-width: 668px) {
+    header {
+        padding: 2em 0;
+    }
+
+    header .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .presentation {
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        font-size: .6em;
+
+    }
+    
+    .presentation__container h1{
+        padding: 2 0em;
+    }
+
+    .presentation__container p {
+        font-size: 1.6em;
+        padding: 1em;
+    }
+
+    .presentation__picture {
+        flex-grow: 1;
+    }
+
+    .presentation__img {
+        max-height: 600px;
+        max-width: 350px;
+    }
+
+    .equipo__picture {
+        flex-grow: 1;
+    }
+
+    .equipo__img {
+        max-height: 600px;
+        max-width: 350px;
+    }
+  
+    .presentation__description {
+        flex-grow: 1;
+        order: -1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .socios {
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        font-size: .6em;
+        gap: 1em;
+    }
+
+    .socios_columnOne{
+        flex-grow: 1;
+    }
+
+    .socios_columnTwo{
+        flex-grow: 1;
+        order: -1;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@keyframes rotation {
+    0%{
+        transform: rotate(0deg);
+    }
+    20%{
+        transform: rotate(20deg);
+    }
+    100%{
+        transform: rotate(-360deg);
+    }
+}
